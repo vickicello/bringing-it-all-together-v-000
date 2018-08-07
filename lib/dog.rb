@@ -49,6 +49,10 @@ class Dog
       Dog.new(result[0], result[1], result[2])
     end
 
+    def self.new_from_db(row)
+      dog = Dog.new(row[0],row[1],row[2])
+    end
+    
 
 
 
