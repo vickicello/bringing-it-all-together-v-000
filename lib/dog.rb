@@ -25,9 +25,9 @@ class Dog
     end
 
     def update
-       sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
-       DB[:conn].execute(sql, self.name, self.breed, self.id)
-     end
+      sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
+      DB[:conn].execute(sql, self.name, self.breed, self.id)
+    end
 
     def save
       if self.id
@@ -57,7 +57,7 @@ class Dog
     def self.new_from_db(row)
       dog = Dog.new(row[0],row[1],row[2])
     end
-    
+
 
 
 
