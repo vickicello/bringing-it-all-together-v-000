@@ -43,7 +43,7 @@ class Dog
       dog
     end
 
-    
+
 
 
   # def self.find(id, db)
