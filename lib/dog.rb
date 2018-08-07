@@ -24,11 +24,6 @@ class Dog
       DB[:conn].execute(sql)
     end
 
-    # def update
-    #   sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
-    #   DB[:conn].execute(sql, self.name, self.breed, self.id)
-    # end
-
     def save
       sql = "INSERT INTO dogs (name, breed) VALUES (?, ?);"
       DB[:conn].execute(sql, self.name, self.breed)
@@ -55,17 +50,15 @@ class Dog
       # end
     end
 
-    def self.new_from_db(row)
-      dog = Dog.new(row[0],row[1],row[2])
+    def self.find_by_name(name)
+      sql = "SELECT * FROM dogs WHERE name = ?"
+      result = DB[:conn].execute(sql, name)[0]
+      Dog.new(id: result[0], name: result[1], breed: result[2])
     end
 
-
-
-
-  # def self.find(id, db)
-  #    pokemon_data = db.execute("SELECT * FROM pokemon WHERE id = ?", id).flatten
-  #    self.new(id: pokemon_data[0], name: pokemon_data[1], type: pokemon_data[2], db: db, hp: pokemon_data[3] )
-  #  end
+    def self.new_from_db(row)
+      dog = Dog.new(id: row[0], name: row[1], breed: row[2])
+    end
 
 
 end
