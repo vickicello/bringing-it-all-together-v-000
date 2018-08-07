@@ -1,6 +1,6 @@
 class Dog
 
-  attr_accessor :id, :name, :breed 
+  attr_accessor :id, :name, :breed
 
   def initialize(id: nil, name:, breed:)
     @id = id
@@ -53,8 +53,8 @@ class Dog
       DB[:conn].execute(sql, self.name, self.breed, self.id)
     end
 
-    def self.create(id:, name:, breed:)
-      dog = Dog.new(name, breed)
+    def self.create(name:, breed:)
+      dog = Dog.new(name: name, breed: breed)
       dog.save
       dog
     end
