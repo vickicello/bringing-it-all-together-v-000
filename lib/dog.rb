@@ -1,6 +1,6 @@
 class Dog
 
-  attr_accessor :id, :name, :breed
+  attr_accessor :id, :name, :breed 
 
   def initialize(id: nil, name:, breed:)
     @id = id
@@ -24,10 +24,10 @@ class Dog
       DB[:conn].execute(sql)
     end
 
-    def update
-      sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
-      DB[:conn].execute(sql, self.name, self.breed, self.id)
-    end
+    # def update
+    #   sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
+    #   DB[:conn].execute(sql, self.name, self.breed, self.id)
+    # end
 
     def save
       if self.id.nil?
