@@ -37,6 +37,14 @@ class Dog
      end
     end
 
+    def self.create(name, breed)
+      dog = Dog.new(name, breed)
+      dog.save
+      dog
+    end
+
+    
+
 
   # def self.find(id, db)
   #    pokemon_data = db.execute("SELECT * FROM pokemon WHERE id = ?", id).flatten
