@@ -30,13 +30,11 @@ class Dog
     # end
 
     def save
-      if self.id.nil?
-        self.insert
-      else
-        self.update
-      end
-     self
-    end
+        sql = "INSERT INTO dogs (name, breed) VALUES (?, ?);"
+        DB[:conn].execute(sql, self.name, self.breed)
+        @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+        self
+     end
 
     def update
       sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?;"
